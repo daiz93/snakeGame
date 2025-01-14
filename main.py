@@ -41,9 +41,6 @@ paused = False
 # Temps écoulé
 start_time = pygame.time.get_ticks()
 
-# Création des boutons
-pause_button_rect = pygame.Rect(WIDTH - 100, 10, 80, 30)
-
 # Fonction d'affichage de l'écran de fin
 def game_over():
     screen.fill(BLACK)
@@ -64,28 +61,28 @@ def increase_difficulty():
 clock = pygame.time.Clock()
 running = True
 while running:
-    screen.fill(BLACK)
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            if pause_button_rect.collidepoint(event.pos):
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                change_to = 'UP'
+            elif event.key == pygame.K_DOWN:
+                change_to = 'DOWN'
+            elif event.key == pygame.K_LEFT:
+                change_to = 'LEFT'
+            elif event.key == pygame.K_RIGHT:
+                change_to = 'RIGHT'
+            elif event.key == pygame.K_p:
                 paused = not paused
 
-    # Dessiner le bouton Pause/Play
-    pygame.draw.rect(screen, WHITE, pause_button_rect)
-    button_text = font.render('Play' if paused else 'Pause', True, BLACK)
-    screen.blit(button_text, (pause_button_rect.x + 10, pause_button_rect.y + 5))
-
     if paused:
-        pygame.display.flip()
         continue
 
     # Calcul du temps écoulé
     elapsed_time = (pygame.time.get_ticks() - start_time) // 1000
 
-    # Déplacement du serpent
+    # Validation de la direction
     if change_to == 'UP' and not snake_direction == 'DOWN':
         snake_direction = 'UP'
     if change_to == 'DOWN' and not snake_direction == 'UP':
@@ -95,6 +92,7 @@ while running:
     if change_to == 'RIGHT' and not snake_direction == 'LEFT':
         snake_direction = 'RIGHT'
 
+    # Déplacement du serpent
     if snake_direction == 'UP':
         snake_pos[1] -= 10
     if snake_direction == 'DOWN':
@@ -125,7 +123,7 @@ while running:
         snake_pos in snake_body[1:]):
         game_over()
 
-    # Dessiner le serpent et la nourriture
+    screen.fill(BLACK)
     for pos in snake_body:
         pygame.draw.rect(screen, GREEN, pygame.Rect(pos[0], pos[1], 10, 10))
 
