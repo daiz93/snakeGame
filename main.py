@@ -1,4 +1,5 @@
 import pygame
+from serpent import Serpent
 import sys
 
 #Initialiser pygame
