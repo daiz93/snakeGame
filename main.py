@@ -1,4 +1,5 @@
 import pygame
+from serpent import Serpent
 import sys
 
 #Initialiser pygame
@@ -29,3 +30,4 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     pygame.display.flip()
+
