@@ -1,5 +1,6 @@
 import pygame
 from serpent import Serpent
+from nourriture import Nourriture
 import sys
 
 #Initialiser pygame
@@ -16,6 +17,11 @@ WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 
+# Initialisation du jeu
+serpent = Serpent()
+nourriture = Nourriture()
+running = True
+clock = pygame.time.Clock()
 
 
 screen.blit(pygame.image.load("welcome.png"), [0, 0])

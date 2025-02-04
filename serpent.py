@@ -26,4 +26,8 @@ class Serpent:
     def grandir(self):
         self.longueur += 1
 
-        
+    def collision_avec_bordure(self):
+        return self.x < 0 or self.x >= WIDTH or self.y < 0 or self.y >= HEIGHT
+
+    def collision_avec_soi_meme(self):
+        return (self.x, self.y) in self.corps[1:]
