@@ -20,3 +20,10 @@ Implémenter le jeu classique du serpent en utilisant une bibliothèque graphiqu
 - Programmation orientée objet  
 - Gestion des événements  
 - Graphiques  
+
+
+## Liste des membres du groupe
+
+DJONDO Cédric
+KPOHIZOUN Desmond
+NOUWLIGBETO Marc-Aurel
