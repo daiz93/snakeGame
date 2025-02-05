@@ -11,7 +11,7 @@ class Serpent:
         self.score = 0
         self.speed = 15
 
-    def change_direction(self, new_direction):
+    def change_direction(self, new_direction): 
         if new_direction == 'UP' and self.direction != 'DOWN':
             self.change_to = 'UP'
         elif new_direction == 'DOWN' and self.direction != 'UP':
