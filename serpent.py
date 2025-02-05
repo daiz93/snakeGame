@@ -1,12 +1,13 @@
 class Serpent:
-    def __init__(self):
-        self.taille = 20
-        self.x = largeur_fenetre // 2
-        self.y = hauteur_fenetre // 2
-        self.dx = 0
-        self.dy = 0
-        self.corps = [(self.x, self.y)]
-        self.longueur = 1
+    def __init__(self, position=[100, 50], body=None, direction='RIGHT'):
+        if body is None:
+            body = [[100, 50], [90, 50], [80, 50]]
+        self.position = position
+        self.body = body
+        self.direction = direction
+        self.change_to = direction
+        self.score = 0
+        self.speed = 15
 
     def deplacer(self):
         # Mise à jour de la position de la tête
@@ -31,3 +32,11 @@ class Serpent:
 
     def collision_avec_soi_meme(self):
         return (self.x, self.y) in self.corps[1:]
+    
+    def check_collision(self, width, height, obstacles):
+        if (self.position[0] < 0 or self.position[0] >= width or
+            self.position[1] < 0 or self.position[1] >= height or
+            self.position in self.body[1:] or
+            self.position in obstacles):
+            return True
+        return False
