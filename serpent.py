@@ -1,5 +1,7 @@
 import pygame
 
+import pygame
+
 class Serpent:
     def __init__(self, position=[100, 50], body=None, direction='RIGHT'):
         if body is None:
