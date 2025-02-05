@@ -1,5 +1,6 @@
 import pygame
 import sys
+
 from serpent import Serpent
 from nourriture import Nourriture
 

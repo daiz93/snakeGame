@@ -8,8 +8,8 @@ class Nourriture:
         self.position = self.spawn_food()
 
     def spawn_food(self):
-        pass
+        return [random.randrange(1, self.width // 10) * 10, random.randrange(1, self.height // 10) * 10]
 
     def draw(self, screen, color=(255, 0, 0)):
-        pass
+        pygame.draw.rect(screen, color, pygame.Rect(self.position[0], self.position[1], 10, 10))
         
